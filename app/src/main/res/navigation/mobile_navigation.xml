@@ -28,7 +28,7 @@
         android:label="Task"
         tools:layout="@layout/fragment_task" />
     <fragment
-        android:id="@+id/navigation_profily"
+        android:id="@+id/navigation_profile"
         android:name="com.example.erkinbekovbilimdz_all_4.ui.Profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
