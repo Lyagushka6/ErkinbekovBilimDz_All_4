@@ -32,4 +32,9 @@
         android:name="com.example.erkinbekovbilimdz_all_4.ui.Profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="com.example.erkinbekovbilimdz_all_4.ui.onBoard.OnBoardFragment"
+        android:label="fragment_on_board"
+        tools:layout="@layout/fragment_on_board" />
 </navigation>

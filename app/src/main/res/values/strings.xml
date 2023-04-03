@@ -12,4 +12,9 @@
     <string name="title_fg">Title</string>
     <string name="description">Description</string>
     <string name="profile_fg">Profile</string>
+    <string name="food">Food</string>
+    <string name="information">information</string>
+    <string name="get_started">Get Started</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
 </resources>
