@@ -1,5 +1,6 @@
 package com.example.erkinbekovbilimdz_all_4.ui.home
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.erkinbekovbilimdz_all_4.App
 import com.example.erkinbekovbilimdz_all_4.R
 import com.example.erkinbekovbilimdz_all_4.databinding.FragmentHomeBinding
 import com.example.erkinbekovbilimdz_all_4.model.Task
@@ -24,7 +26,7 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private val adapter = TaskAdapter()
+    private val adapter = TaskAdapter(this :: onLongClick)
 
 
     override fun onCreateView(
@@ -41,15 +43,32 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setFragmentResultListener(TASK_REQUEST){key, bundle ->
-            val result = bundle.getSerializable(TASK_KEY) as Task
-            adapter.addTask(result)
-            
-        }
+
+        setData()
         binding.recyclerView.adapter = adapter
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)
         }
+    }
+
+    private fun setData(){
+        val data = App.db.TaskDao().getAll()
+        adapter.addTasks(data)
+    }
+
+    private fun onLongClick(task: Task) {
+        val alertDialog = AlertDialog.Builder(requireContext())
+        alertDialog.setTitle("Удалить?")
+        alertDialog.setMessage("Вы точно хотите удалить?")
+        alertDialog.setNegativeButton("Нет") { d, i ->
+            d.dismiss()
+        }
+        alertDialog.setPositiveButton("Да") { d, i ->
+            App.db.TaskDao().delete(task)
+            d.dismiss()
+            setData()
+        }
+        alertDialog.create().show()
     }
 
     override fun onDestroyView() {

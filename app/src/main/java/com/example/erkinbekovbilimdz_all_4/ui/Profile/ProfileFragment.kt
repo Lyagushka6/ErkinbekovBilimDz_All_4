@@ -51,6 +51,7 @@ class ProfileFragment : Fragment() {
         intent.type = "image/*"
         intent.action = Intent.ACTION_PICK
         launcher.launch(intent)
+
     }
 
     private fun saveName() {
