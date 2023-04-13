@@ -29,7 +29,7 @@ class TaskFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnSave.setOnClickListener {
-            if (binding.etTitle.text.isNotEmpty()) {
+            if (binding.etTitle.text!!.isNotEmpty()) {
                 save()
             }else binding.etTitle.error = "Заполняйте! >:("
         }

@@ -35,6 +35,11 @@
     <fragment
         android:id="@+id/onBoardFragment"
         android:name="com.example.erkinbekovbilimdz_all_4.ui.onBoard.OnBoardFragment"
-        android:label="fragment_on_board"
+        android:label="OnBoard"
         tools:layout="@layout/fragment_on_board" />
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.erkinbekovbilimdz_all_4.ui.auth.AuthFragment"
+        android:label="Authentication"
+        tools:layout="@layout/fragment_auth" />
 </navigation>
